@@ -1,4 +1,4 @@
-"""TestSimpleCalculatorBx - Simple calculator for packaging demo.
+"""calculator - Simple calculator for packaging demo.
 
 Author: Maxime Bornard
 License: Unlicense
