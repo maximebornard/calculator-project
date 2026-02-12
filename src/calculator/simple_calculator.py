@@ -1,10 +1,7 @@
-"""calculator.simple_calculator
+"""Simple calculator module.
 
-This module defines the :class:`SimpleCalculator` class.
-
-It provides basic arithmetic operations with strict input validation:
-all parameters must be integers. The methods return integers except
-:method:`divide`, which always returns a float.
+Provides the SimpleCalculator class with basic arithmetic operations.
+All inputs must be integers. The divide method returns a float.
 
 Author: Maxime Bornard
 """
