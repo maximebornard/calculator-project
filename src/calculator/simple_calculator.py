@@ -2,9 +2,9 @@
 
 """
 
-class simpleCalculator:
+class SimpleCalculator:
     
-    def valide(value: object, name: str) -> int:
+    def valide(self, value: object, name: str) -> None:
         if not isinstance(value, int):
             raise TypeError(f"{name} doit être un int")
     
@@ -23,7 +23,7 @@ class simpleCalculator:
         self.valide(b, "b")
         return int(a * b)
     
-    def devide(self, a: int, b: int) -> int:
+    def divide(self, a: int, b: int) -> int:
         self.valide(a, "a")
         self.valide(b, "b")
         return float(a / b)
