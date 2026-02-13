@@ -26,7 +26,7 @@ def test_fsum_type_error() -> None:
     """Test that fsum raises TypeError with invalid input"""
     with pytest.raises(TypeError):
         calc.fsum("2", 3)
-        
+
 # -------------------
 # Tests substract
 # -------------------
@@ -94,4 +94,3 @@ def test_divide_type_error() -> None:
     """Test that divide raises TypeError with invalid input."""
     with pytest.raises(TypeError):
         calc.divide(5, "2")
-        

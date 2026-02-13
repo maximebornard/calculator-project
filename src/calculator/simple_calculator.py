@@ -6,6 +6,7 @@ All inputs must be integers. The divide method returns a float.
 Author: Maxime Bornard
 """
 
+
 class SimpleCalculator:
     """A simple calculator implementing basic arithmetic operations.
 
@@ -14,7 +15,7 @@ class SimpleCalculator:
         - fsum, substract and multiply return integers.
         - divide returns a float and raises ZeroDivisionError if b == 0.
     """
-    
+
     def valide(self, value: object, name: str) -> None:
         """Validate that the given value is an integer.
 
@@ -27,7 +28,7 @@ class SimpleCalculator:
         """
         if not isinstance(value, int):
             raise TypeError(f"{name} doit être un int")
-    
+
     def fsum(self, a: int, b: int) -> int:
         """Add two integers.
 
@@ -44,7 +45,7 @@ class SimpleCalculator:
         self.valide(a, "a")
         self.valide(b, "b")
         return int(a + b)
-    
+
     def substract(self, a: int, b: int) -> int:
         """Subtract b from a.
 
@@ -61,7 +62,7 @@ class SimpleCalculator:
         self.valide(a, "a")
         self.valide(b, "b")
         return int(a - b)
-    
+
     def multiply(self, a: int, b: int) -> int:
         """Multiply two integers.
 
@@ -78,7 +79,7 @@ class SimpleCalculator:
         self.valide(a, "a")
         self.valide(b, "b")
         return int(a * b)
-    
+
     def divide(self, a: int, b: int) -> float:
         """Divide a by b.
 
