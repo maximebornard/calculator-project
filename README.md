@@ -42,3 +42,45 @@ La classe `SimpleCalculator` propose les opérations suivantes :
 ---
 
 ## Structure du projet
+
+```
+calculator-project/
+├── pyproject.toml
+├── LICENSE
+├── README.md
+├── src/
+│   └── calculator/
+│       ├── __init__.py
+│       └── simple_calculator.py
+└── tests/
+    └── test_simple_calculator.py
+```
+
+---
+
+## Rôle des fichiers
+
+### `pyproject.toml`
+
+Fichier de configuration principal du projet.  
+Il contient :
+
+- Les métadonnées du projet  
+- Les dépendances  
+- Les outils de test et de qualité  
+
+### `simple_calculator.py`
+
+Contient la classe `SimpleCalculator` et les opérations arithmétiques.
+
+### `__init__.py`
+
+`SimpleCalculator` pour permettre l’import simplifié :
+
+```python
+from calculator import SimpleCalculator
+
+### `test_simple_calculator.py`
+
+Contient les tests unitaires qui vérifient le bon fonctionnement du calculateur.
+
