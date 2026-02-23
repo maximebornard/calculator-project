@@ -1,4 +1,4 @@
-Author: Maxime BORNARD
+Auteur: Maxime BORNARD
 
 # Calculator Project
 
