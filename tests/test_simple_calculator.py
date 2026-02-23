@@ -3,6 +3,7 @@ Tests for the SimpleCalculator class.
 
 Author: Maxime BORNARD
 """
+
 import pytest
 from calculator import SimpleCalculator
 
@@ -11,6 +12,7 @@ calc = SimpleCalculator()
 # -------------------
 # Tests fsum
 # -------------------
+
 
 def test_fsum_positive() -> None:
     """Test addition with positive integers"""
@@ -27,9 +29,11 @@ def test_fsum_type_error() -> None:
     with pytest.raises(TypeError):
         calc.fsum("2", 3)
 
+
 # -------------------
 # Tests substract
 # -------------------
+
 
 def test_substract_positive() -> None:
     """Test subtraction with positive integers"""
@@ -47,11 +51,10 @@ def test_substract_type_error() -> None:
         calc.substract(5, None)
 
 
-
-
 # -------------------
 # Tests multiply
 # -------------------
+
 
 def test_multiply_basic() -> None:
     """Test multiplication of two integers"""
@@ -69,10 +72,10 @@ def test_multiply_type_error() -> None:
         calc.multiply(4, "3")
 
 
-
 # -------------------
 # Tests devide
 # -------------------
+
 
 def test_divide_basic() -> None:
     """Test division of two integers."""
