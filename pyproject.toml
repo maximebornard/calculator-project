@@ -1,5 +1,5 @@
 [project]
-name = "calculator"
+name = "calculator-maximebornard"
 version = "0.0.1"
 authors = [{name = "Maxime Bornard"}]
 description = "Simple calculator for packaginig demo"

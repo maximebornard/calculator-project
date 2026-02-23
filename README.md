@@ -1,1 +1,2 @@
-Author: Maxime BORNARD
+Auteur: Maxime BORNARD
+
