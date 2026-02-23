@@ -93,7 +93,7 @@ python -m venv .venv
 
 ### Activation
 
-.venv\Scripts\activate
+.venv_calculator\Scripts\activate
 
 ### Installation du projet et des dépendances de test
 
