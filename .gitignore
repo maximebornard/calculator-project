@@ -9,4 +9,4 @@ __pycache__/
 *.egg-info/
 
 # Environnements virtuels
-venv_calculator/
+venv_calculator/  
