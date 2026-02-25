@@ -67,6 +67,8 @@ Il contient :
 - Les métadonnées du projet  
 - Les dépendances  
 - Les outils de test et de qualité  
+Les outils de qualité sont définis dans pyproject.toml :  
+    test = ["pytest>=7.0", "pytest-cov", "pylint", "black", "radon"]  
 
 ### `simple_calculator.py`
 
@@ -208,9 +210,6 @@ Cela affiche :
     Les lignes non couvertes  
     Objectif : atteindre une couverture proche de 100 %.  
     Analyse de qualité du code  
-
-Les outils de qualité sont définis dans pyproject.toml :  
-    test = ["pytest>=7.0", "pytest-cov", "pylint", "black", "radon"]  
 
 ## Pylint — Qualité du code
 
