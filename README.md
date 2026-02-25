@@ -268,6 +268,103 @@ Fichiers générés dans dist/ :
 Upload du paquet :  
 twine upload --repository testpypi dist/*  
 
+---
+
+# Intégration Continue et Déploiement Continu (CI/CD)
+
+Afin d’automatiser la qualité du code et la publication du paquet, une pipeline CI/CD a été mise en place sur **GitHub** et **GitLab**.
+
+## CI/CD avec GitHub Actions
+
+Un workflow GitHub Actions a été configuré dans :
+
+```
+.github/workflows/main.yml
+```
+
+### Partie CI (Intégration Continue)
+
+À chaque `push` ou `pull request`, la pipeline exécute automatiquement :
+
+- Installation de Python (version 3.10)
+- Installation des dépendances
+- Vérification du format avec **Black**
+- Analyse statique avec **Ruff / Pylint**
+- Exécution des tests avec **pytest**
+- Vérification de la couverture de code
+
+Objectif : garantir que le code est propre, testé et fonctionnel avant toute publication.
+
+---
+
+### Partie CD (Déploiement Continu)
+
+Lorsqu’un tag au format `vX.Y.Z` est créé (exemple : `v0.0.4`), la pipeline :
+
+1. Construit le paquet (`python -m build`)
+2. Génère les artefacts (`.whl` et `.tar.gz`)
+3. Publie automatiquement le paquet sur **TestPyPI** via `twine`
+
+Cela permet une publication automatisée et sécurisée.
+
+---
+
+## CI/CD avec GitLab CI
+
+Une pipeline équivalente a été mise en place sur GitLab via le fichier :
+
+```
+.gitlab-ci.yml
+```
+
+### Stages configurés
+
+La pipeline GitLab est divisée en plusieurs étapes :
+
+- `lint` → vérification du format et de la qualité
+- `test` → exécution des tests unitaires
+- `build` → construction du paquet
+- `publish` → publication sur TestPyPI
+
+---
+
+### Déclenchement
+
+- Un simple `push` déclenche la CI (lint + tests + build).
+- Un tag au format `vX.Y.Z` déclenche en plus la publication automatique sur TestPyPI.
+
+Exemple :
+
+```
+git tag v0.0.4
+git push origin v0.0.4
+```
+
+---
+
+## Sécurisation des publications
+
+La publication sur TestPyPI utilise un **API Token** stocké comme variable sécurisée :
+
+- GitHub → `Secrets`
+- GitLab → `CI/CD Variables`
+
+Le token permet d’authentifier `twine` sans exposer de mot de passe dans le code.
+
+---
+
+## Objectif pédagogique
+
+La mise en place du CI/CD permet de :
+
+- Comprendre l’automatisation des tests
+- Industrialiser la qualité du code
+- Automatiser la distribution d’un paquet Python
+- Se rapprocher des pratiques professionnelles modernes
+
+Cette étape complète le cycle de vie du projet :
+développement → test → build → publication automatisée.
+
 ## Auteur
 
 Maxime Bornard
