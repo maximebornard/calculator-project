@@ -1,8 +1,10 @@
-name: CI
+name: CI/CD
 
 on:
   push:
     branches: ["main"]
+    tags:
+      - "v*"
   pull_request:
     branches: ["main"]
 
@@ -11,47 +13,46 @@ jobs:
   # CI: Qualité + Tests
   # -------------------------
   quality-and-tests:
+    name: quality-and-tests
     runs-on: ubuntu-latest
 
     steps:
-      # 1) Récupère le code du dépôt dans la machine GitHub
+      # 1) Récupère le code du dépôt
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2) Installe la version de Python voulue (ici 3.10)
+      # 2) Installe Python
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.10"
 
-      # 3) Met à jour pip et installe ton projet + dépendances de test
-      #    -e .[test] installe le package en mode "editable" + pytest/pylint/black/radon/pytest-cov
+      # 3) Installe ton projet + dépendances de test
       - name: Install project and test dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -e .[test]
 
-      # 4) Vérifie que le code est bien formaté (ne modifie pas, juste contrôle)
+      # 4) Vérifie le formatage (ne modifie pas)
       - name: Check formatting (black)
         run: |
           black --check .
 
-      # 5) Analyse statique (qualité / conventions) sur tes fichiers principaux
+      # 5) Lint (pylint)
       - name: Lint (pylint)
         run: |
           pylint src/calculator/simple_calculator.py
           pylint tests/test_simple_calculator.py
 
-      # 6) Mesure de complexité
+      # 6) Complexité (radon)
       - name: Complexity (radon)
         run: |
           radon cc src -a
 
-      # 7) Lance les tests + mesure de couverture
+      # 7) Tests + couverture
       - name: Run tests (pytest + coverage)
         run: |
           pytest --cov=calculator
-
 
   # -------------------------
   # CD: Build + Artifact + Publish TestPyPI
@@ -90,14 +91,14 @@ jobs:
         run: |
           twine check dist/*
 
-      # 6) Crée un artefact GitHub avec le dossier dist/
+      # 6) ✅ Crée un artefact GitHub avec le dossier dist/
       - name: Upload dist/ as artifact
         uses: actions/upload-artifact@v4
         with:
           name: python-dist
           path: dist/
 
-      # 7) Publie sur TestPyPI
+      # 7) ✅ Publie sur TestPyPI
       - name: Publish to TestPyPI
         env:
           TWINE_USERNAME: __token__
