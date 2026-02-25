@@ -39,7 +39,7 @@ jobs:
           pylint src/calculator/simple_calculator.py
           pylint tests/test_simple_calculator.py
 
-      # 6) Mesure de complexité (info utile pour un TP)
+      # 6) Mesure de complexité
       - name: Complexity (radon)
         run: |
           radon cc src -a
